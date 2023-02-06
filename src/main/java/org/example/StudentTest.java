@@ -57,7 +57,7 @@ public class StudentTest {
         l.info("Enter the number of students");
         int numOfStudent=sc.nextInt();
 
-        LinkedList<Student> StudentList = new LinkedList<>();
+        LinkedList<Student> studentList = new LinkedList<>();
 
         for (i = 0; i < numOfStudent; i++) {
             l.log(Level.INFO,()->"Enter the Student ID ");
@@ -66,17 +66,17 @@ public class StudentTest {
             name=sc.next();
             l.log(Level.INFO,()->"Enter the Student GPA ");
             gpa=sc.nextDouble();
-            StudentList.add(new Student( id,name,gpa));
+            studentList.add(new Student( id,name,gpa));
         }
-        
+
         l.info("Before Sorting");
 
-        for (i = 0; i < StudentList.size(); i++) {
-            String s1=String.format(format,"ID: "+StudentList.get(i).getId(), "Name: "+StudentList.get(i).getName(), "GPA: "+StudentList.get(i).getGPA());
+        for (i = 0; i < studentList.size(); i++) {
+            String s1=String.format(format,"ID: "+studentList.get(i).getId(), "Name: "+studentList.get(i).getName(), "GPA: "+studentList.get(i).getGPA());
             l.info(s1);
         }
 
-        Collections.sort(StudentList, (s1, s2) -> {
+        Collections.sort(studentList, (s1, s2) -> {
             if (s1.getGPA() == s2.getGPA()) {
                 return 0;
             }
@@ -85,11 +85,11 @@ public class StudentTest {
             }
             return 1;
         });
-        
+
         l.info("After Sorting");
 
-        for(i = 0; i<StudentList.size();i++) {
-                String s1 = String.format(format, "ID: " + StudentList.get(i).getId(), "Name: " + StudentList.get(i).getName(), "GPA: " + StudentList.get(i).getGPA());
+        for(i = 0; i<studentList.size();i++) {
+                String s1 = String.format(format, "ID: " + studentList.get(i).getId(), "Name: " + studentList.get(i).getName(), "GPA: " + studentList.get(i).getGPA());
                 l.info(s1);
             }
 
