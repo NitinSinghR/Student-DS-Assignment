@@ -1,7 +1,7 @@
 package org.example;
 
-import java.util.LinkedList;
-import java.util.Scanner;
+
+import java.util.*;
 import java.util.logging.*;
 
 class Student{
@@ -47,6 +47,7 @@ public class StudentTest {
         String id;
         String name;
         double gpa;
+        int i;
 
         String format = " %2s | %-10s | %7s0 ";
 
@@ -56,40 +57,41 @@ public class StudentTest {
         l.info("Enter the number of students");
         int numOfStudent=sc.nextInt();
 
-        LinkedList<Student> studentList = new LinkedList<>();
+        LinkedList<Student> StudentList = new LinkedList<>();
 
-        for (int i = 0; i < numOfStudent; i++) {
-            int finalI = i;
-            l.log(Level.INFO,()->"Enter the Student ID "+ finalI);
+        for (i = 0; i < numOfStudent; i++) {
+            l.log(Level.INFO,()->"Enter the Student ID ");
             id=sc.next();
-            l.log(Level.INFO,()->"Enter the Student Name "+ finalI);
+            l.log(Level.INFO,()->"Enter the Student Name ");
             name=sc.next();
-            l.log(Level.INFO,()->"Enter the Student GPA "+ finalI);
+            l.log(Level.INFO,()->"Enter the Student GPA ");
             gpa=sc.nextDouble();
-            studentList.add(new Student( id,name,gpa));
+            StudentList.add(new Student( id,name,gpa));
         }
+        
+        l.info("Before Sorting");
 
-        for (int i = 0; i < studentList.size(); i++) {
-            String s1=String.format(format,"ID: "+studentList.get(i).getId(), "Name: "+studentList.get(i).getName(), "GPA: "+studentList.get(i).getGPA());
+        for (i = 0; i < StudentList.size(); i++) {
+            String s1=String.format(format,"ID: "+StudentList.get(i).getId(), "Name: "+StudentList.get(i).getName(), "GPA: "+StudentList.get(i).getGPA());
             l.info(s1);
         }
 
-        studentList.sort((o1, o2) -> {
-            if (o1.getGPA() == o2.getGPA()) {
+        Collections.sort(StudentList, (s1, s2) -> {
+            if (s1.getGPA() == s2.getGPA()) {
                 return 0;
             }
-            if (o1.getGPA() > o2.getGPA()) {
+            if (s1.getGPA() > s2.getGPA()) {
                 return -1;
             }
             return 1;
-
         });
+        
+        l.info("After Sorting");
 
+        for(i = 0; i<StudentList.size();i++) {
+                String s1 = String.format(format, "ID: " + StudentList.get(i).getId(), "Name: " + StudentList.get(i).getName(), "GPA: " + StudentList.get(i).getGPA());
+                l.info(s1);
+            }
 
-        for (int i = 0; i < studentList.size(); i++) {
-            String s1=String.format(format,"ID: "+studentList.get(i).getId(), "Name: "+studentList.get(i).getName(), "GPA: "+studentList.get(i).getGPA());
-            l.info(s1);
         }
-
-    }
 }
