@@ -9,6 +9,12 @@ class Student{
     private String name;
     private double gpa;
 
+    public Student(String id, String name, double gpa) {
+        setId(id);
+        setName(name);
+        setGPA(gpa);
+    }
+
     public String getId() {
         return id;
     }
@@ -31,12 +37,6 @@ class Student{
 
     public void setGPA(double gpa) {
             this.gpa = gpa;
-    }
-
-    public Student(String id, String name, double gpa) {
-        setId(id);
-        setName(name);
-        setGPA(gpa);
     }
 
 }
