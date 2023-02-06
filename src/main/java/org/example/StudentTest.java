@@ -48,6 +48,8 @@ public class StudentTest {
         String name;
         double gpa;
 
+        String format = " %2s | %-10s | %7s0 ";
+
         Scanner sc=new Scanner(System.in);
         Logger l=Logger.getLogger("com.api.jar");
 
@@ -67,6 +69,11 @@ public class StudentTest {
             studentList.add(new Student( id,name,gpa));
         }
 
+        for (int i = 0; i < studentList.size(); i++) {
+            String s1=String.format(format,"ID: "+studentList.get(i).getId(), "Name: "+studentList.get(i).getName(), "GPA: "+studentList.get(i).getGPA());
+            l.info(s1);
+        }
+
         studentList.sort((o1, o2) -> {
             if (o1.getGPA() == o2.getGPA()) {
                 return 0;
@@ -78,7 +85,6 @@ public class StudentTest {
 
         });
 
-        String format = " %2s | %-10s | %7s0 ";
 
         for (int i = 0; i < studentList.size(); i++) {
             String s1=String.format(format,"ID: "+studentList.get(i).getId(), "Name: "+studentList.get(i).getName(), "GPA: "+studentList.get(i).getGPA());
