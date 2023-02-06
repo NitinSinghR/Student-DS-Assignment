@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class Student{
@@ -57,11 +58,12 @@ public class StudentTest {
         LinkedList<Student> studentList = new LinkedList<>();
 
         for (int i = 0; i < numOfStudent; i++) {
-            l.info("Enter the Student ID "+i);
+            int finalI = i;
+            l.log(Level.INFO,()->"Enter the Student ID "+ finalI);
             id=sc.next();
-            l.info("Enter the Student Name "+i);
+            l.log(Level.INFO,()->"Enter the Student Name "+ finalI);
             name=sc.next();
-            l.info("Enter the Student GPA "+i);
+            l.log(Level.INFO,()->"Enter the Student GPA "+ finalI);
             gpa=sc.nextDouble();
             studentList.add(new Student( id,name,gpa));
         }
@@ -80,7 +82,8 @@ public class StudentTest {
         String format = " %2s | %-10s | %7s0 ";
 
         for (int i = 0; i < studentList.size(); i++) {
-            l.info(String.format(format,"ID: "+studentList.get(i).getId(), "Name: "+studentList.get(i).getName(), "GPA: "+studentList.get(i).getGPA()));
+            String s1=String.format(format,"ID: "+studentList.get(i).getId(), "Name: "+studentList.get(i).getName(), "GPA: "+studentList.get(i).getGPA());
+            l.info(s1);
         }
 
     }
