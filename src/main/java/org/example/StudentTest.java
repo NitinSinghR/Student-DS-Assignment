@@ -3,43 +3,6 @@ package org.example;
 import java.util.*;
 import java.util.logging.*;
 
-class Student{
-    private String id;
-    private String name;
-    private double gpa;
-
-    public Student(String id, String name, double gpa) {
-        setId(id);
-        setName(name);
-        setGPA(gpa);
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getGPA() {
-        return gpa;
-    }
-
-    public void setGPA(double gpa) {
-            this.gpa = gpa;
-    }
-
-}
-
 public class StudentTest {
 
     public static void main(String[] args) {
@@ -48,7 +11,7 @@ public class StudentTest {
         double gpa;
         int i;
 
-        String format = " %2s | %-10s | %7s0 ";
+        String format = " %2s | %-10s | %7s ";
 
         Scanner sc = new Scanner(System.in);
         Logger l = Logger.getLogger("com.api.jar");
@@ -75,14 +38,8 @@ public class StudentTest {
             l.info(s1);
         }
 
-        Collections.sort(studentList, (s1, s2) -> {
-            if (s1.getGPA() == s2.getGPA()) {
-                return 0;
-            }
-            if (s1.getGPA() > s2.getGPA()) {
-                return -1;
-            }
-            return 1;
+        studentList.sort((s1, s2) -> {
+            return Double.compare(s2.getGPA(), s1.getGPA());
         });
 
         l.info("After Sorting");
