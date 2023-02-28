@@ -38,9 +38,7 @@ public class StudentTest {
             l.info(s1);
         }
 
-        studentList.sort((s1, s2) -> {
-            return Double.compare(s2.getGPA(), s1.getGPA());
-        });
+        studentList.sort((s1, s2) -> Double.compare(s2.getGPA(), s1.getGPA()));
 
         l.info("After Sorting");
 
